@@ -1,17 +1,1 @@
-(function () {
-  const root = document.documentElement;
-  const btn = document.getElementById("themeToggle");
-  const saved = localStorage.getItem("theme");
-  const preferredDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-  const initial = saved || (preferredDark ? "dark" : "light");
-
-  root.dataset.theme = initial;
-
-  if (btn) {
-    btn.addEventListener("click", function () {
-      const next = root.dataset.theme === "dark" ? "light" : "dark";
-      root.dataset.theme = next;
-      localStorage.setItem("theme", next);
-    });
-  }
-})();
+(function(){const r=document.documentElement,b=document.getElementById('themeToggle');const s=localStorage.getItem('theme');r.dataset.theme=s||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');if(b)b.onclick=()=>{const n=r.dataset.theme==='dark'?'light':'dark';r.dataset.theme=n;localStorage.setItem('theme',n)}})();
