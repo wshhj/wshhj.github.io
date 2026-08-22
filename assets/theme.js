@@ -1,0 +1,7 @@
+
+(function(){
+ const r=document.documentElement,b=document.getElementById('themeToggle');
+ const s=localStorage.getItem('theme');
+ r.dataset.theme=s||(window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');
+ if(b)b.onclick=()=>{const n=r.dataset.theme==='dark'?'light':'dark';r.dataset.theme=n;localStorage.setItem('theme',n)};
+})();

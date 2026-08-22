@@ -1,14 +1,4 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>单线 UART 充电器通讯工具 · Arthur Engineer</title><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/main.js"></script></head><body>
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand-wrap" href="../index.html">
-      <span class="brand-mark">A</span><span class="brand">Arthur Engineer</span>
-    </a>
-    <nav>
-      <a href="../index.html">首页</a><a href="../archive.html">文章</a><a href="../projects.html">项目</a><a href="../videos.html">视频</a><a href="../resume.html">简历</a><a href="../about.html">关于</a>
-      <button id="themeToggle" class="theme-btn" aria-label="切换深色模式">◐</button>
-    </nav>
-  </div>
-</header>
-<main class="container article-page"><a class="back" href="../projects.html">← 返回项目</a><header class="article-header"><div class="eyebrow">ENGINEERING PROJECT</div><h1>单线 UART 充电器通讯工具</h1><p>用于充电器与模拟电池之间的通讯测试。</p><div class="project-tech"><span class="tag">UART</span><span class="tag">Python</span><span class="tag">Serial</span></div></header><article class="article-body"><h2>项目简介</h2><p>围绕一线通充电器测试需求开发，用于串口抓包、报文分析、自定义发送和模拟电池自动应答。</p><h2>核心问题</h2><p>充电器需要在收到电池通讯后才能稳定输出，普通电子负载无法模拟通讯。</p><h2>解决思路</h2><p>通过 USB-TTL 和协议解析，模拟电池端持续回复充电允许、电压和电流参数。</p><h2>工程价值</h2><p>降低真实电池参与测试的依赖，提高通讯问题定位效率。</p></article></main>
-<footer class="site-footer"><div class="container footer-inner"><span>© 2026 Arthur Engineer Blog</span><div class="footer-links"><a href="../projects.html">Projects</a><a href="../archive.html">Articles</a><a href="../resume.html">Resume</a></div></div></footer></body></html>
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Arthur Engineer Blog"><title>单线 UART 充电器通讯工具 · Arthur Engineer</title><link rel="icon" href="../assets/icons/logo.svg"><link rel="stylesheet" href="../assets/style.css"><script defer src="../assets/theme.js"></script></head><body><header class="site-header"><div class="container nav">
+<a class="brand-wrap" href="../index.html"><img class="brand-logo" src="../assets/icons/logo.svg" alt=""><span class="brand">Arthur Engineer</span></a>
+<nav><a href="../index.html">首页</a><a href="../blog.html">文章</a><a href="../knowledge.html">知识库</a><a class=active href="../projects.html">项目</a><a href="../videos.html">视频</a><a href="../resume.html">简历</a><a class="github-btn" href="https://github.com/wshhj" target="_blank" rel="noopener">GitHub ↗</a><button id="themeToggle" class="icon-btn" aria-label="切换主题">◐</button></nav>
+</div></header><main class="container article-layout"><article class="article"><a class="back" href="../projects.html" onclick="history.back();return false;">← 返回项目</a><header class="article-header"><div class="eyebrow">ENGINEERING PROJECT</div><h1>单线 UART 充电器通讯工具</h1><p>模拟电池持续应答，支持充电器通讯测试。</p><div class="project-tech"><span class="tag">UART</span><span class="tag">Python</span><span class="tag">Serial</span></div></header><div class="article-body"><h2>问题背景</h2><p>部分充电器只有识别到电池通讯后才允许稳定输出，单纯电子负载无法完成完整测试。</p><h2>解决方案</h2><p>使用 USB-TTL 与协议分析，提供报文发送、接收、自动应答和模拟电池功能。</p><h2>工程价值</h2><p>降低真实电池参与测试的依赖，并提高协议异常定位效率。</p></div></article></main><footer class="site-footer"><div class="container footer-inner"><span>© 2026 Arthur Engineer Blog · Built on GitHub Pages</span><div class="footer-links"><a href="../blog.html">Articles</a><a href="../projects.html">Projects</a><a href="../assets/Arthur-Engineer-Resume.pdf">Resume PDF</a></div></div></footer></body></html>

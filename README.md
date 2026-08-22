@@ -1,39 +1,47 @@
-# Arthur Engineer Blog V3
+# Arthur Engineer Blog V4
 
-正式个人工程师博客，适用于 GitHub Pages。
+## V4 核心升级
 
-## V3 功能
-- 工程师风格首页
-- E-Bike / 电控 / 项目 / 成长分类
-- 文章归档与分类筛选
-- 站内搜索
+- Markdown 文章系统：正文放在 `content/*.md`
+- 通用文章阅读页：`article.html?post=文章slug`
+- E-Bike 技术知识库
 - 工程项目作品集
-- 视频页面
-- 个人简历
-- 关于页面
+- GitHub 个人主页入口
+- 视频展示页
+- 可下载 PDF 简历
+- 站内搜索
 - 深色模式
-- 手机端适配
-- 404 页面
+- 响应式手机端
+- SVG Logo / 工程师头像占位图
 - GitHub Pages 直接部署
 
-## 部署
-把压缩包解压后的全部文件上传到：
+## 发布到 GitHub Pages
 
-`wshhj.github.io`
+将压缩包解压后的全部内容上传到 `wshhj.github.io` 仓库根目录。
 
-仓库根目录。
-
-GitHub Pages 设置：
-
+Pages 设置：
 - Source: Deploy from a branch
 - Branch: main
 - Folder: /(root)
 
-## 修改重点
-- 首页：index.html
-- 文章：posts/
-- 项目：projects/
-- 样式：assets/style.css
-- 搜索数据：assets/search.js
-- 简历：resume.html
-- 视频：videos.html
+## 新增文章的方法
+
+1. 在 `content/` 新建 Markdown 文件，例如：
+
+   `controller-test.md`
+
+2. 在 `assets/data.js` 的 `posts` 中加入文章信息。
+
+3. 在 `blog.html` 增加文章入口。
+
+文章地址：
+
+`article.html?post=controller-test`
+
+## 修改个人信息
+
+- 首页：`index.html`
+- 简历网页：`resume.html`
+- PDF 简历：`assets/Arthur-Engineer-Resume.pdf`
+- GitHub 地址：搜索 `github.com/wshhj`
+- 头像占位图：`assets/icons/avatar.svg`

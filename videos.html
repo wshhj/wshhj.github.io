@@ -1,31 +1,11 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>工程视频 · Arthur Engineer</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/main.js"></script></head><body>
-<header class="site-header">
-  <div class="container nav">
-    <a class="brand-wrap" href="index.html">
-      <span class="brand-mark">A</span><span class="brand">Arthur Engineer</span>
-    </a>
-    <nav>
-      <a href="index.html">首页</a><a href="archive.html">文章</a><a href="projects.html">项目</a><a class="active" href="videos.html">视频</a><a href="resume.html">简历</a><a href="about.html">关于</a>
-      <button id="themeToggle" class="theme-btn" aria-label="切换深色模式">◐</button>
-    </nav>
-  </div>
-</header>
-<main class="container page"><p class="eyebrow">VIDEOS</p><h1 class="page-title">工程视频</h1><p class="page-lead">用于记录测试过程、设备演示、异常复现和技术学习。</p>
-<div class="video-grid">
-<div class="video-card"><div class="video-placeholder"><div><strong>E-Bike 测试记录</strong><p>后续嵌入 Bilibili / YouTube</p></div></div><div class="video-info"><span class="tag">测试</span><h3>整车 / 电机 / 爬坡</h3><p>适合放真实测试过程、数据说明和异常复现。</p></div></div>
-<div class="video-card"><div class="video-placeholder"><div><strong>工程工具演示</strong><p>项目管理 / UART / 自动化</p></div></div><div class="video-info"><span class="tag">项目</span><h3>工具演示视频</h3><p>用于展示个人项目的设计思路和实际使用。</p></div></div>
-</div>
-<section class="section"><div class="search-panel"><h2>推荐的视频使用方式</h2><p style="color:var(--muted)">把大视频上传到 Bilibili 或 YouTube，再用 iframe 嵌入博客。这样 GitHub 仓库保持轻量，页面加载也更稳定。</p><pre>&lt;div class="video-frame"&gt;
-  &lt;iframe src="视频嵌入地址" allowfullscreen&gt;&lt;/iframe&gt;
-&lt;/div&gt;</pre></div></section>
-</main>
-<footer class="site-footer">
-  <div class="container footer-inner">
-    <span>© 2026 Arthur Engineer Blog</span>
-    <div class="footer-links">
-      <a href="projects.html">Projects</a>
-      <a href="archive.html">Articles</a>
-      <a href="resume.html">Resume</a>
-    </div>
-  </div>
-</footer></body></html>
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Arthur Engineer Blog"><title>工程视频 · Arthur Engineer</title><link rel="icon" href="assets/icons/logo.svg"><link rel="stylesheet" href="assets/style.css"><script defer src="assets/theme.js"></script></head><body><header class="site-header"><div class="container nav">
+<a class="brand-wrap" href="index.html"><img class="brand-logo" src="assets/icons/logo.svg" alt=""><span class="brand">Arthur Engineer</span></a>
+<nav><a href="index.html">首页</a><a href="blog.html">文章</a><a href="knowledge.html">知识库</a><a href="projects.html">项目</a><a class=active href="videos.html">视频</a><a href="resume.html">简历</a><a class="github-btn" href="https://github.com/wshhj" target="_blank" rel="noopener">GitHub ↗</a><button id="themeToggle" class="icon-btn" aria-label="切换主题">◐</button></nav>
+</div></header>
+<main class="container page"><p class="eyebrow">VIDEOS</p><h1 class="page-title">工程视频</h1><p class="page-lead">记录测试过程、异常复现、工具演示和学习实验。建议将大视频上传至 Bilibili / YouTube 后嵌入。</p>
+<div class="video-grid"><div class="video-card"><div class="video-placeholder"><div><strong>E-Bike 测试记录</strong><p>整车 · 电机 · 爬坡 · 防水</p></div></div><div class="video-info"><span class="tag">测试</span><h3>真实测试过程</h3><p>未来可放测试路线、温升、爬坡和异常视频。</p></div></div>
+<div class="video-card"><div class="video-placeholder"><div><strong>工程项目演示</strong><p>测试管理 · UART · 自动化</p></div></div><div class="video-info"><span class="tag">项目</span><h3>工具 Demo</h3><p>展示项目如何解决真实工作问题。</p></div></div></div>
+<section class="section"><div class="search-panel"><h2>嵌入视频示例</h2><pre>&lt;div class="video-frame"&gt;
+  &lt;iframe src="Bilibili 或 YouTube 嵌入地址" allowfullscreen&gt;&lt;/iframe&gt;
+&lt;/div&gt;</pre><p class="small-note">不建议把大量 MP4 直接提交到 GitHub 仓库。</p></div></section>
+</main><footer class="site-footer"><div class="container footer-inner"><span>© 2026 Arthur Engineer Blog · Built on GitHub Pages</span><div class="footer-links"><a href="blog.html">Articles</a><a href="projects.html">Projects</a><a href="assets/Arthur-Engineer-Resume.pdf">Resume PDF</a></div></div></footer></body></html>
