@@ -1,7 +1,31 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>文章 · Arthur Blog</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/main.js"></script></head><body><header class="site-header"><div class="container nav"><a class="brand" href="index.html">Arthur.</a><nav>
-<a  href="index.html">首页</a>
-<a class="active" href="archive.html">文章</a>
-<a  href="videos.html">视频</a>
-<a  href="about.html">关于</a>
-<button id="themeToggle" class="theme-btn" aria-label="切换深色模式">◐</button></nav></div></header>
-<main class="container page"><p class="eyebrow">ARCHIVE</p><h1 class="page-title">文章归档</h1><p class="page-lead">这里收录博客中的全部文章。</p><div class="archive-list"><a class="archive-item" href="posts/first-post.html"><span>我的第一篇正式博客</span><time>2026-08-22</time></a></div></main><footer class="site-footer"><div class="container footer-inner"><span>© 2026 Arthur Blog</span><span>Articles · Videos · Projects</span></div></footer></body></html>
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>文章归档 · Arthur Engineer</title><link rel="stylesheet" href="assets/style.css"><script defer src="assets/main.js"></script><script defer src="assets/search.js"></script></head><body>
+<header class="site-header">
+  <div class="container nav">
+    <a class="brand-wrap" href="index.html">
+      <span class="brand-mark">A</span><span class="brand">Arthur Engineer</span>
+    </a>
+    <nav>
+      <a href="index.html">首页</a><a class="active" href="archive.html">文章</a><a href="projects.html">项目</a><a href="videos.html">视频</a><a href="resume.html">简历</a><a href="about.html">关于</a>
+      <button id="themeToggle" class="theme-btn" aria-label="切换深色模式">◐</button>
+    </nav>
+  </div>
+</header>
+<main class="container page"><p class="eyebrow">ARTICLES</p><h1 class="page-title">技术文章</h1><p class="page-lead">系统记录 E-Bike 测试、电控通信、工程项目和学习方法。</p>
+<div class="archive-toolbar"><button class="filter-btn active" data-filter="全部">全部</button><button class="filter-btn" data-filter="E-Bike">E-Bike</button><button class="filter-btn" data-filter="电控">电控</button><button class="filter-btn" data-filter="项目">项目</button><button class="filter-btn" data-filter="成长">成长</button></div>
+<div class="archive-list">
+<a class="archive-item" data-category="E-Bike" href="posts/ebike-motor-test.html"><div><h3>E-Bike 电机测试方法</h3><p>电机性能、效率、温升、老化与爬坡测试。</p></div><div class="archive-meta">E-Bike · 2026-08-22</div></a>
+<a class="archive-item" data-category="电控" href="posts/uart-basics.html"><div><h3>UART 通讯测试基础</h3><p>从串口参数、报文结构到实际联调。</p></div><div class="archive-meta">电控 · 2026-08-20</div></a>
+<a class="archive-item" data-category="项目" href="projects/test-management.html"><div><h3>E-Bike 测试管理系统</h3><p>如何把测试项目管理流程做成工具。</p></div><div class="archive-meta">项目 · 2026-08-18</div></a>
+<a class="archive-item" data-category="成长" href="posts/learning-system.html"><div><h3>如何建立长期学习系统</h3><p>输入、练习、输出与复盘。</p></div><div class="archive-meta">成长 · 2026-08-18</div></a>
+<a class="archive-item" data-category="成长" href="posts/first-post.html"><div><h3>我的第一篇正式博客</h3><p>建立属于自己的长期知识库。</p></div><div class="archive-meta">成长 · 2026-08-12</div></a>
+</div></main>
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <span>© 2026 Arthur Engineer Blog</span>
+    <div class="footer-links">
+      <a href="projects.html">Projects</a>
+      <a href="archive.html">Articles</a>
+      <a href="resume.html">Resume</a>
+    </div>
+  </div>
+</footer></body></html>

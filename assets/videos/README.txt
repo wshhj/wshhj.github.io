@@ -1,1 +1,1 @@
-可把 MP4 放在这里，例如 demo.mp4；正式使用建议上传到 Bilibili / YouTube 后嵌入。
+建议不要直接长期存放大视频。优先上传 Bilibili / YouTube 后 iframe 嵌入。
