@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://wshhj.github.io/sitemap.xml

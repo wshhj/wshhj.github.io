@@ -1,48 +1,7 @@
 
 function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]))}
-function inline(s){
- s=esc(s);
- s=s.replace(/`([^`]+)`/g,'<code>$1</code>');
- s=s.replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>');
- s=s.replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>');
- return s;
-}
-function markdown(md){
- const lines=md.replace(/\r/g,'').split('\n'); let h='',inCode=false,code=[],inUl=false,inOl=false;
- function closeLists(){if(inUl){h+='</ul>';inUl=false} if(inOl){h+='</ol>';inOl=false}}
- for(let i=0;i<lines.length;i++){
-  let l=lines[i];
-  if(l.startsWith('```')){
-   if(!inCode){closeLists();inCode=true;code=[]}else{h+='<pre><code>'+esc(code.join('\n'))+'</code></pre>';inCode=false}
-   continue;
-  }
-  if(inCode){code.push(l);continue}
-  if(!l.trim()){closeLists();continue}
-  let m;
-  if(m=l.match(/^(#{1,3})\s+(.+)$/)){closeLists();const n=m[1].length,id=m[2].toLowerCase().replace(/[^\w\u4e00-\u9fff]+/g,'-');h+=`<h${n} id="${id}">${inline(m[2])}</h${n}>`;continue}
-  if(m=l.match(/^>\s?(.+)$/)){closeLists();h+=`<blockquote>${inline(m[1])}</blockquote>`;continue}
-  if(m=l.match(/^[-*]\s+(.+)$/)){if(!inUl){closeLists();h+='<ul>';inUl=true}h+=`<li>${inline(m[1])}</li>`;continue}
-  if(m=l.match(/^\d+\.\s+(.+)$/)){if(!inOl){closeLists();h+='<ol>';inOl=true}h+=`<li>${inline(m[1])}</li>`;continue}
-  closeLists();h+=`<p>${inline(l)}</p>`;
- }
- closeLists(); return h;
-}
-function buildTOC(){
- const toc=document.getElementById('tocLinks'),body=document.getElementById('articleBody');if(!toc||!body)return;
- const hs=[...body.querySelectorAll('h2,h3')];toc.innerHTML=hs.map(x=>`<a href="#${x.id}" style="${x.tagName==='H3'?'padding-left:10px':''}">${x.textContent}</a>`).join('');
-}
-document.addEventListener('DOMContentLoaded',async()=>{
- const body=document.getElementById('articleBody'); if(!body)return;
- const slug=new URLSearchParams(location.search).get('post')||'first-post';
- const meta=(window.SITE_DATA?.posts||[]).find(x=>x.slug===slug);
- if(meta){
-   document.getElementById('articleTitle').textContent=meta.title;
-   document.getElementById('articleDesc').textContent=meta.desc;
-   document.getElementById('articleMeta').textContent=`${meta.date} · ${meta.category}`;
-   document.title=meta.title+' · Arthur Engineer';
- }
- try{
-   const r=await fetch(`content/${slug}.md`); if(!r.ok)throw new Error();
-   body.innerHTML=markdown(await r.text()); buildTOC();
- }catch(e){body.innerHTML='<p>文章加载失败，请确认 Markdown 文件存在。</p>'}
-});
+function inline(s){s=esc(s);s=s.replace(/`([^`]+)`/g,'<code>$1</code>').replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>').replace(/\[([^\]]+)\]\(([^)]+)\)/g,'<a href="$2">$1</a>');return s}
+function markdown(md){const L=md.replace(/\r/g,'').split('\n');let h='',code=false,c=[],ul=false,ol=false;const close=()=>{if(ul){h+='</ul>';ul=false}if(ol){h+='</ol>';ol=false}};for(const l of L){if(l.startsWith('```')){if(!code){close();code=true;c=[]}else{h+='<pre><code>'+esc(c.join('\n'))+'</code></pre>';code=false}continue}if(code){c.push(l);continue}if(!l.trim()){close();continue}let m;if(m=l.match(/^(#{1,3})\s+(.+)$/)){close();const n=m[1].length,id=m[2].toLowerCase().replace(/[^\w\u4e00-\u9fff]+/g,'-');h+=`<h${n} id="${id}">${inline(m[2])}</h${n}>`;continue}if(m=l.match(/^>\s?(.+)$/)){close();h+=`<blockquote>${inline(m[1])}</blockquote>`;continue}if(m=l.match(/^[-*]\s+(.+)$/)){if(!ul){close();h+='<ul>';ul=true}h+=`<li>${inline(m[1])}</li>`;continue}if(m=l.match(/^\d+\.\s+(.+)$/)){if(!ol){close();h+='<ol>';ol=true}h+=`<li>${inline(m[1])}</li>`;continue}close();h+=`<p>${inline(l)}</p>`}close();return h}
+function toc(){const t=document.getElementById('tocLinks'),b=document.getElementById('articleBody');if(t&&b)t.innerHTML=[...b.querySelectorAll('h2,h3')].map(x=>`<a href="#${x.id}">${x.textContent}</a>`).join('')}
+function enhance(meta){document.querySelectorAll('#articleBody pre').forEach(pre=>{const b=document.createElement('button');b.className='copy-code';b.textContent='复制';b.onclick=async()=>{await navigator.clipboard.writeText(pre.innerText.replace(/^复制\s*/,''));b.textContent='已复制';setTimeout(()=>b.textContent='复制',1000)};pre.appendChild(b)});const info=document.getElementById('articleInfo');if(info&&meta)info.innerHTML=`<span>约 ${meta.reading} 分钟阅读</span><span>${meta.tags.map(t=>'#'+t).join(' ')}</span>`;const rel=document.getElementById('relatedPosts');if(rel&&meta){const a=SITE_DATA.posts.filter(x=>x.slug!==meta.slug&&(x.category===meta.category||x.tags.some(t=>meta.tags.includes(t)))).slice(0,2);rel.innerHTML=a.map(x=>`<a class="related-card" href="article.html?post=${x.slug}"><strong>${x.title}</strong><span>${x.category} · ${x.reading} min</span></a>`).join('')}}
+document.addEventListener('DOMContentLoaded',async()=>{const b=document.getElementById('articleBody');if(!b)return;const s=new URLSearchParams(location.search).get('post')||'first-post',m=SITE_DATA.posts.find(x=>x.slug===s);if(m){articleTitle.textContent=m.title;articleDesc.textContent=m.desc;articleMeta.textContent=`${m.date} · ${m.category}`;document.title=m.title+' · Arthur Engineer'}try{const r=await fetch(`content/${s}.md`);b.innerHTML=markdown(await r.text());toc();enhance(m)}catch{b.innerHTML='<p>文章加载失败。</p>'}});

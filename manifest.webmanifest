@@ -1,0 +1,17 @@
+{
+  "name": "Arthur Engineer Blog",
+  "short_name": "Arthur Engineer",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#f4f6f8",
+  "theme_color": "#111827",
+  "description": "E-Bike 测试、电控学习、工程项目与个人知识库。",
+  "icons": [
+    {
+      "src": "assets/icons/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
