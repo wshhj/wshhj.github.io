@@ -1,31 +1,24 @@
-# Arthur Engineer Blog V5
+# Hero Blog V6
 
-V5 将网站从“个人博客”升级为“长期工程知识平台”。
+本次细节优化内容：
+1. 优化整体排版，更简洁美观
+2. 全站博客名称统一改为 `Hero`
+3. 首页新增“星辰大海”炫酷动画背景
 
-## V5 新增
-- PWA：可安装到桌面 / 手机主屏幕
-- Service Worker：核心页面缓存
-- RSS：`rss.xml`
-- SEO：`sitemap.xml` + `robots.txt`
-- 阅读进度条
-- 代码块一键复制
-- 文章链接复制
-- 相关文章推荐
-- 项目状态与项目指标
-- 首页重点内容
-- 技术标签云
-- 网站更新日志
+## 部署
+将压缩包解压后的全部文件上传到 `wshhj.github.io` 仓库根目录。
 
-## 写新文章
-1. 在 `content/` 新建 `.md`
-2. 在 `assets/data.js` 增加文章元信息
-3. 在 `blog.html` 增加文章入口
-4. 链接格式：`article.html?post=slug`
-
-## GitHub Pages
-把全部文件上传到 `wshhj.github.io` 仓库根目录。
-
-Pages 设置：
+GitHub Pages:
 - Deploy from a branch
 - main
 - /(root)
+
+## 主要文件
+- `index.html` 首页
+- `blog.html` 博客文章
+- `knowledge.html` 知识库
+- `projects.html` 项目页
+- `videos.html` 视频页
+- `resume.html` 简历页
+- `content/` Markdown 文章
+- `assets/style.css` 样式

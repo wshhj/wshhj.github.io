@@ -1,11 +1,11 @@
 {
-  "name": "Arthur Engineer Blog",
-  "short_name": "Arthur Engineer",
+  "name": "Hero",
+  "short_name": "Hero",
   "start_url": "./",
   "display": "standalone",
-  "background_color": "#f4f6f8",
-  "theme_color": "#111827",
-  "description": "E-Bike 测试、电控学习、工程项目与个人知识库。",
+  "background_color": "#0a0f18",
+  "theme_color": "#0a0f18",
+  "description": "Hero - E-Bike 测试、电控学习、工程项目与个人知识库。",
   "icons": [
     {
       "src": "assets/icons/logo.svg",
