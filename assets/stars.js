@@ -1,81 +1,66 @@
 
 (function(){
-  const canvas=document.getElementById('heroStars');
+  const canvas = document.getElementById('heroStars');
   if(!canvas) return;
-  const ctx=canvas.getContext('2d',{alpha:true});
-  const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const finePointer=matchMedia('(pointer:fine)').matches;
-  let w=0,h=0,ratio=1,stars=[],shooters=[],mouse={x:null,y:null};
-  let running=true,lastFrame=0,nextShooter=0;
-  const FPS=36,FRAME=1000/FPS;
-
+  if(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const ctx = canvas.getContext('2d');
+  let width = 0, height = 0, ratio = 1, stars = [], meteors = [], running = true;
   function resize(){
-    ratio=Math.min(devicePixelRatio||1,1.25);
-    w=canvas.clientWidth;h=canvas.clientHeight;
-    canvas.width=Math.max(1,Math.floor(w*ratio));
-    canvas.height=Math.max(1,Math.floor(h*ratio));
+    ratio = Math.min(window.devicePixelRatio || 1, 1.25);
+    width = canvas.offsetWidth; height = canvas.offsetHeight;
+    canvas.width = width * ratio; canvas.height = height * ratio;
     ctx.setTransform(ratio,0,0,ratio,0,0);
-    const count=reduced?28:(w<760?38:62);
-    stars=Array.from({length:count},()=>({
-      x:Math.random()*w,y:Math.random()*h,r:.45+Math.random()*1.25,
-      vx:(Math.random()-.5)*.035,vy:(Math.random()-.5)*.035,
-      a:.28+Math.random()*.62,p:Math.random()*Math.PI*2
+    const count = Math.max(50, Math.min(88, Math.floor(width / 20)));
+    stars = Array.from({length:count}, () => ({
+      x: Math.random()*width,
+      y: Math.random()*height,
+      r: Math.random()*1.4 + .35,
+      a: Math.random()*.6 + .25,
+      da: (Math.random()*.015) + .004,
+      d: Math.random() > .5 ? 1 : -1
     }));
   }
-
-  function spawnShooter(){
-    shooters.push({
-      x:w*(.35+Math.random()*.6),y:20+Math.random()*h*.24,
-      vx:-5.2-Math.random()*1.6,vy:2.2+Math.random()*1.2,
-      len:90+Math.random()*70,life:0,ttl:32+Math.random()*12
+  function spawnMeteor(){
+    meteors.push({
+      x: width * (.18 + Math.random()*.62),
+      y: 40 + Math.random()*height*.24,
+      len: 68 + Math.random()*60,
+      dx: -4.2 - Math.random()*1.8,
+      dy: 2.1 + Math.random()*1.2,
+      life: 0,
+      ttl: 32 + Math.random()*14
     });
   }
-
+  let last = 0;
   function draw(ts){
-    if(!running){requestAnimationFrame(draw);return;}
-    if(ts-lastFrame<FRAME){requestAnimationFrame(draw);return;}
-    lastFrame=ts;
-    ctx.clearRect(0,0,w,h);
-
+    if(!running) return;
+    if(ts - last < 25){ requestAnimationFrame(draw); return; } // ~40fps
+    last = ts;
+    ctx.clearRect(0,0,width,height);
     for(const s of stars){
-      if(!reduced){s.x+=s.vx;s.y+=s.vy;s.p+=.014;}
-      if(s.x<0)s.x=w;if(s.x>w)s.x=0;if(s.y<0)s.y=h;if(s.y>h)s.y=0;
-      const alpha=Math.max(.14,Math.min(1,s.a+Math.sin(s.p)*.14));
-      ctx.fillStyle=`rgba(255,255,255,${alpha})`;
-      ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fill();
-      if(finePointer&&mouse.x!==null&&!reduced){
-        const dx=s.x-mouse.x,dy=s.y-mouse.y,d2=dx*dx+dy*dy;
-        if(d2<110*110){
-          const d=Math.sqrt(d2);
-          ctx.strokeStyle=`rgba(139,214,255,${.20*(1-d/110)})`;
-          ctx.lineWidth=.45;ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(mouse.x,mouse.y);ctx.stroke();
-        }
-      }
+      s.a += s.da * s.d;
+      if(s.a > 1 || s.a < .16) s.d *= -1;
+      ctx.beginPath();
+      ctx.fillStyle = `rgba(255,255,255,${s.a})`;
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fill();
     }
-
-    if(!reduced&&ts>nextShooter){
-      spawnShooter();
-      nextShooter=ts+3200+Math.random()*4200;
-    }
-    shooters=shooters.filter(s=>s.life<s.ttl);
-    for(const s of shooters){
-      s.x+=s.vx;s.y+=s.vy;s.life++;
-      const a=1-s.life/s.ttl;
-      const grad=ctx.createLinearGradient(s.x,s.y,s.x-s.len,s.y-s.len*.42);
-      grad.addColorStop(0,`rgba(255,255,255,${a})`);
-      grad.addColorStop(.35,`rgba(139,214,255,${a*.72})`);
-      grad.addColorStop(1,'rgba(255,255,255,0)');
-      ctx.strokeStyle=grad;ctx.lineWidth=1.35;
-      ctx.beginPath();ctx.moveTo(s.x,s.y);ctx.lineTo(s.x-s.len,s.y-s.len*.42);ctx.stroke();
+    if(Math.random() < .012 && meteors.length < 4) spawnMeteor();
+    meteors = meteors.filter(m => m.life < m.ttl);
+    for(const m of meteors){
+      m.x += m.dx; m.y += m.dy; m.life += 1;
+      const alpha = 1 - m.life / m.ttl;
+      const grad = ctx.createLinearGradient(m.x, m.y, m.x - m.len, m.y - m.len*.48);
+      grad.addColorStop(0, `rgba(255,255,255,${alpha})`);
+      grad.addColorStop(.45, `rgba(133,149,255,${alpha*.7})`);
+      grad.addColorStop(1, 'rgba(255,255,255,0)');
+      ctx.strokeStyle = grad;
+      ctx.lineWidth = 1.2;
+      ctx.beginPath(); ctx.moveTo(m.x,m.y); ctx.lineTo(m.x - m.len, m.y - m.len*.48); ctx.stroke();
     }
     requestAnimationFrame(draw);
   }
-
-  if(finePointer&&!reduced){
-    canvas.addEventListener('mousemove',e=>{const r=canvas.getBoundingClientRect();mouse.x=e.clientX-r.left;mouse.y=e.clientY-r.top},{passive:true});
-    canvas.addEventListener('mouseleave',()=>{mouse.x=null;mouse.y=null},{passive:true});
-  }
-  document.addEventListener('visibilitychange',()=>{running=!document.hidden});
-  addEventListener('resize',resize,{passive:true});
-  resize();requestAnimationFrame(draw);
+  document.addEventListener('visibilitychange', ()=>{ running = !document.hidden; if(running) requestAnimationFrame(draw); });
+  addEventListener('resize', resize, {passive:true});
+  resize(); requestAnimationFrame(draw);
 })();

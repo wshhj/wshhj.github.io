@@ -1,6 +1,69 @@
-<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Hero personal engineer portfolio"><title>Hero · Home</title><link rel="icon" href="assets/icons/logo.svg"><link rel="preload" as="image" href="assets/hero-motorcycle-red.webp" type="image/webp"><link rel="stylesheet" href="assets/style.css"><script defer src="assets/data.js"></script><script defer src="assets/app.js"></script><script defer src="assets/stars.js"></script></head><body><header class="site-header"><div class="container nav nav-menu-only"><button class="menu-btn" type="button" aria-label="打开导航" aria-expanded="false" data-menu-toggle><span class="menu-icon"></span></button></div></header><div class="mobile-overlay" data-menu-overlay></div><nav class="mobile-nav" aria-hidden="true" data-mobile-nav><a href="index.html" class="active"><span>首页</span><span>→</span></a><a href="knowledge.html" class=""><span>知识库</span><span>→</span></a><a href="projects.html" class=""><span>项目</span><span>→</span></a><a href="about.html" class=""><span>个人</span><span>→</span></a><a href="contact.html" class=""><span>联系</span><span>→</span></a><a class="mobile-cta" href="projects.html"><span>查看作品</span><span>→</span></a></nav><main>
-<section class="hero hero-background"><canvas id="heroStars"></canvas><div class="hero-image-layer" aria-hidden="true"></div><div class="hero-vignette" aria-hidden="true"></div><div class="container hero-grid hero-grid-background"><div class="hero-copy"><div class="eyebrow">个人工程作品集</div><h1>HERO</h1><div class="display">ENGINEER<br>PORTFOLIO</div><div class="hero-quote">真正的成长，不是知道更多，而是把每一次实践都沉淀成下一次出发的底气。</div><div class="hero-actions"><a class="btn primary" href="projects.html">查看项目</a><a class="btn" href="about.html">个人资料</a><a class="btn" href="knowledge.html">知识库</a></div></div></div></section>
-<section class="section alt"><div class="container"><div class="section-head"><div><h2>重点内容</h2><p>把视觉、工程和知识沉淀放在同一个长期网站中。</p></div><a href="projects.html">查看全部项目 →</a></div><div class="feature-grid"><div class="feature-card panel"><div class="eyebrow">项目精选</div><h3>E‑Bike 测试管理系统</h3><p>将测试申请、异常、复测与审核统一管理，让项目进度从“靠记忆”转向“可追踪”。</p><div class="hero-actions" style="margin-top:18px"><a class="btn primary" href="projects/test-management.html">项目详情</a><a class="btn" href="projects.html">项目列表</a></div></div><div class="feature-card panel"><div class="eyebrow">知识库</div><h3>从“测参数”到“做工程判断”</h3><p>围绕扭矩、效率、温升、老化和爬坡，建立更完整的测试评价框架。</p><div class="hero-actions" style="margin-top:18px"><a class="btn primary" href="article.html?post=ebike-motor-test">阅读文章</a><a class="btn" href="blog.html">文章归档</a></div></div></div></div></section>
-<section class="section"><div class="container"><div class="section-head"><div><h2>知识领域</h2><p>从知识模块快速进入你关注的工程主题。</p></div><a href="knowledge.html">进入知识库 →</a></div><div class="knowledge-grid"><a class="knowledge-card panel" href="knowledge.html#motor"><strong>Motor</strong><span>扭矩 · 效率 · 温升 · 老化</span></a><a class="knowledge-card panel" href="knowledge.html#battery"><strong>Battery / BMS</strong><span>容量 · 循环 · 保护 · IP</span></a><a class="knowledge-card panel" href="knowledge.html#charger"><strong>Charger</strong><span>效率 · OCP · 通讯</span></a><a class="knowledge-card panel" href="knowledge.html#comm"><strong>Communication</strong><span>UART · CAN · 协议分析</span></a></div></div></section>
-<section class="section alt"><div class="container"><div class="section-head"><div><h2>站内搜索</h2><p>搜索文章、项目和技术主题。</p></div></div><div class="search-panel panel"><div class="search-box"><input id="siteSearch" placeholder="例如：电机、UART、测试管理、温升……"></div><div id="searchResults" class="search-results"></div></div></div></section>
-</main><footer class="footer"><div class="container footer-inner"><span>© 2026 Hero · Personal Engineer Portfolio</span><div class="footer-links"><a href="blog.html">文章归档</a><a href="updates.html">更新履历</a><a href="about.html">个人</a><a href="contact.html">联系</a></div></div></footer></body></html>
+<!doctype html><html lang="zh-CN"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="Hero 首页"><title>Hero · Home</title>
+<link rel="icon" href="assets/icons/logo.svg">
+<link rel="preload" as="image" href="assets/hero-motorcycle-red.webp" type="image/webp">
+<link rel="stylesheet" href="assets/style.css">
+<script defer src="assets/data.js"></script>
+<script defer src="assets/app.js"></script>
+<script defer src="assets/stars.js"></script>
+</head><body class="home-body">
+<div class="home-shell">
+  <div class="home-bg" aria-hidden="true"></div>
+  <canvas id="heroStars"></canvas>
+  <div class="home-topbar"><button class="menu-btn" type="button" aria-label="打开菜单" data-home-toggle><span class="menu-icon"></span></button></div>
+  <aside class="home-side-menu" data-home-sidebar>
+    <div class="home-side-head"><div class="home-badge">H</div><div class="home-side-close" data-home-close>×</div></div>
+    <div class="home-side-links">
+      <a href="index.html" class="active"><span class="mini-icon">⌂</span><span>首页</span></a>
+      <a href="knowledge.html"><span class="mini-icon">⌘</span><span>知识库</span></a>
+      <a href="projects.html"><span class="mini-icon">▣</span><span>项目</span></a>
+      <a href="about.html"><span class="mini-icon">◌</span><span>个人</span></a>
+      <a href="contact.html"><span class="mini-icon">✉</span><span>联系</span></a>
+      <a class="menu-cta" href="projects.html">查看作品 <span>→</span></a>
+    </div>
+  </aside>
+  <div class="container home-inner">
+    <section class="home-main">
+      <div class="home-copy">
+        <div class="eyebrow">个人工程作品集</div>
+        <h1>HERO</h1>
+        <div class="home-display">ENGINEER PORTFOLIO</div>
+        <div class="home-accent"></div>
+        <p class="home-quote">真正的成长，不是知道更多，而是把每一次实践都沉淀成下一次出发的底气。</p>
+        <div class="home-actions">
+          <a class="btn" href="projects.html">探索项目 <span>→</span></a>
+          <a class="btn" href="knowledge.html">进入知识库 <span>→</span></a>
+        </div>
+        <div class="home-social">
+          <a class="social-link" href="https://github.com/wshhj" target="_blank" rel="noopener" aria-label="GitHub">◔</a>
+          <a class="social-link" href="contact.html" aria-label="邮箱">✉</a>
+          <a class="social-link" href="about.html" aria-label="经历">⌘</a>
+          <a class="social-link" href="contact.html" aria-label="微信">◉</a>
+        </div>
+      </div>
+    </section>
+    <div class="home-scroll" aria-hidden="true"><div class="mouse"></div><div class="arrow">⌄</div></div>
+    <section class="home-cards">
+      <a class="home-card panel" href="knowledge.html">
+        <div class="home-card-head"><div class="home-card-icon">⌘</div><div><h3>知识库</h3><p>E‑Bike 测试、电机、控制器、电池、充电器等技术文章与规范。</p></div></div>
+        <div class="card-link">进入知识库 <span>→</span></div>
+      </a>
+      <a class="home-card panel" href="projects.html">
+        <div class="home-card-head"><div class="home-card-icon">▣</div><div><h3>项目</h3><p>完整项目案例，包含测试方案、测试报告、工具与系统开发。</p></div></div>
+        <div class="card-link">查看项目 <span>→</span></div>
+      </a>
+      <a class="home-card panel" href="about.html">
+        <div class="home-card-head"><div class="home-card-icon">◌</div><div><h3>个人</h3><p>关于我、技能栈、成长经历，以及联系方式。</p></div></div>
+        <div class="card-link">了解更多 <span>→</span></div>
+      </a>
+    </section>
+    <footer class="home-footer">
+      <span>© 2025 Hero Engineer Portfolio. All rights reserved.</span>
+      <a href="updates.html">更新履历</a>
+      <span>|</span>
+      <a href="contact.html">联系说明</a>
+    </footer>
+  </div>
+</div>
+</body></html>
